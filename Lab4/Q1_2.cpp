@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+
+void remove_negatve( std::vector<double>& v) {
+    // std::vector<double> v2;
+    // for (int i = 0; i < v.size(); i++) {
+    //     if (v[i] >= 0) {
+    //         v2.push_back(v[i]);
+    //     }
+    // }
+    // return v2;
+    for (int i = 0; i < v.size(); i++) {
+        if (v[i] < 0) {
+            v.erase(v.begin() + i);
+        }
+    }
+}
+
+int main() {
+    std::vector<double> v = {0.8, -5.1, 1.6, -6.5, 10.5};
+
+    // show original sequence
+    std::cout << "Original sequence: ";
+    for (int i = 0; i < v.size(); i++) {
+        std::cout << v[i] << " ";
+    }
+
+    std::cout << "\n";
+
+    remove_negatve(v);
+    // show new sequence
+    std::cout << "Vector after removing negatice numbers: ";
+    for (int i = 0; i < v.size(); i++) {
+        std::cout << v[i] << " ";
+    }
+    
+    return 0;
+}

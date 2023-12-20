@@ -1,25 +1,25 @@
 #include <iostream>
 #include <random>
 
-class Rand_int {
-    private:
-        std::default_random_engine re;
-        std::uniform_int_distribution<int> dist;
+// class Rand_int {
+//     private:
+//         std::default_random_engine re;
+//         std::uniform_int_distribution<int> dist;
 
-    public:
-        Rand_int(int low, int high) : re{}, dist{low, high} {
-            std::random_device rd;
-            re.seed(rd());
-        }
+//     public:
+//         Rand_int(int low, int high) : re{}, dist{low, high} {
+//             std::random_device rd;
+//             re.seed(rd());
+//         }
         
-        int operator()() { return dist(re); }
+//         int operator()() { return dist(re); }
 
-};
+// };
 
 class GuessNumberGame {
     private:
         int tries;
-        int number;
+        int number = rand() % 100 + 1;
 
     public:
         GuessNumberGame(int tries) : tries(tries) {}
@@ -29,11 +29,11 @@ class GuessNumberGame {
             tries = t;
         }
 
-        void setNumber() {
-            Rand_int r(0, 100);
-            int n = r();
-            number = n;
-        }
+        // void setNumber() {
+        //     Rand_int r(0, 100);
+        //     int n = r();
+        //     number = n;
+        // }
 
         void setGuess(int g) {
             guess = g;
@@ -102,7 +102,7 @@ class GuessNumberGame {
 
 int main() {
     GuessNumberGame g(10);
-    g.setNumber();
+    // g.setNumber();
     g.play();
     return 0;
 }
