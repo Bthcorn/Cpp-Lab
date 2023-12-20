@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-void remove_negatve( std::vector<double>& v) {
+void remove_negative( std::vector<double>& v) {
     // std::vector<double> v2;
     // for (int i = 0; i < v.size(); i++) {
     //     if (v[i] >= 0) {
@@ -27,9 +27,9 @@ int main() {
 
     std::cout << "\n";
 
-    remove_negatve(v);
+    remove_negative(v);
     // show new sequence
-    std::cout << "Vector after removing negatice numbers: ";
+    std::cout << "Vector after removing negative numbers: ";
     for (int i = 0; i < v.size(); i++) {
         std::cout << v[i] << " ";
     }
