@@ -151,7 +151,7 @@ int main()
                     b.setQuantity(quantity);
                     inv.addBook(b);
                 }
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear input buffer
+                // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear input buffer
             }
             catch (std::invalid_argument const &e)
             {
