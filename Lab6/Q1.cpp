@@ -45,7 +45,7 @@ int main()
         std::cout << "Invalid input." << std::endl;
         return 0;
     }
-    
+
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear the newline character left in the buffer
 
 
