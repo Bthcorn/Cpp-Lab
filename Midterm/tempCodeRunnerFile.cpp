@@ -1,0 +1,1 @@
+growthRate / 100
