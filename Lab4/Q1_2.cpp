@@ -18,6 +18,8 @@ void remove_negative( std::vector<double>& v) {
 
 int main() {
     std::vector<double> v = {0.8, -5.1, 1.6, -6.5, 10.5};
+    int arr[10];
+    // size_t = sizeof(arr) / sizeof(arr[0]);
 
     // show original sequence
     std::cout << "Original sequence: ";

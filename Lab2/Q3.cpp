@@ -18,6 +18,7 @@ public:
 private:
     std::default_random_engine re;
     std::uniform_real_distribution<double> dist;
+    std::uniform_int_distribution<int> dist2;
 };
 int main()
 {

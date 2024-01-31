@@ -1,6 +1,9 @@
 #include <iostream>
 #include <random>
 #include <ctime>
+#include <array>
+
+typedef std::array<std::array<int, 3>, 3> matrix;
 
 class GuessNumberGame
 {
