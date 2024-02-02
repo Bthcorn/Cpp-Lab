@@ -15,6 +15,8 @@ public:
         // (*this).x = x;
         this->x = x;
         this->y = y;
+        Entity& e = *this;
+        PrintEntity(*this);
     }
 
     int GetX() const
@@ -31,6 +33,12 @@ public:
         return y;
     }
 };
+
+void PrintEntity(const Entity& e)
+{
+    std::cout << e.GetX() << ", " << e.GetY() << std::endl;
+}
+
 int main() 
 {
 
