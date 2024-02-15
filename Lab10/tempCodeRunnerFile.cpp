@@ -1,7 +1,7 @@
- // auto it = std::unique(result.exps.begin(), result.exps.end(), [](const Term &a, const Term &b) {
-        //     return a.exp == b.exp;
-        // });
-        // it = std::remove_if(result.exps.begin(), result.exps.end(), [](const Term &a) {
-        //     return a.coeff == 0;
-        // });
-        // result.exps.resize(std::distance(result.exps.begin(), it));
+for (size_t i = 0; i < size; i++)
+        // {
+        //     for (size_t j = 0; j < size; j++)
+        //     {
+        //         maze[i][j] = ;
+        //     }
+        // }
