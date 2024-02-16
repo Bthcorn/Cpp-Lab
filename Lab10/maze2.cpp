@@ -1,14 +1,12 @@
 #include <iostream>
 #include <random>
 #include <ctime>
-#include <memory>
 #include <vector>
-#include <array>
 
 class Rand_Int
 {
 public:
-    Rand_Int(int low, int high) : dist(low, high) // Fixing constructor initialization
+    Rand_Int(int low, int high) : dist(low, high) // Correcting constructor initialization
     {
         std::random_device rd;
         re.seed(rd()); // Seed initialization
@@ -18,6 +16,7 @@ public:
         return dist(re); // Using the correct distribution
     }
 
+    ~Rand_Int() = default; // Destructor
 private:
     std::default_random_engine re;
     std::uniform_int_distribution<int> dist; // Fixing the distribution type
@@ -26,10 +25,7 @@ private:
 class Maze
 {
 private:
-    // std::unique_ptr<char[]> maze;
-    // std::unique_ptr<char[][]> maze1;
     size_t size = 15;
-    // std::array<std::array<char, 15>, 15> maze;
     std::vector<std::vector<char>> maze;
     char wall = '#';
     char path = ' ';
@@ -39,64 +35,46 @@ private:
     size_t path_out = 0;
 
 public:
-    Maze()
+    // std::random_device rd;
+    // std::default_random_engine re(rd());
+    // std::uniform_int_distribution<int> rand_wall(0, row.size() - 1);
+    Maze(int rand_path_in, int rand_path_out) : path_in(rand_path_in), path_out(rand_path_out)
     {
-        Rand_Int rand(1, 13);
-        path_in = rand();
-        path_out = rand();
         maze.resize(size, std::vector<char>(size, wall));
         maze[0][path_in] = start;
         maze[size - 1][path_out] = end;
     }
 
-    // void generate()
-    // {
-    //     Rand_Int rand(0, 1);
-    //     // reserve vector size
-    //     for (size_t i = 1; i < size - 1; i++)
-    //     {
-    //         for (size_t j = 1; j < size - 1; j++)
-    //         {
-    //             maze[i][j] = rand() ? path : wall;
-    //         }
-    //     }
-
-    //     maze[1][1] = start;
-    //     maze[size - 2][size - 2] = end;
-    // }
-
     void make_walls()
     {
-        Rand_Int rand_path_pos(1, 13);
-        // size_t path_pos = rand_path_pos();
-        size_t temp_start = 0;
-        size_t temp_end = 0;
+        int temp_start = path_in;
+        int temp_end = path_in;
+        Rand_Int rand_path_pos(1, size - 2); // Adjusted to ensure path positions are within bounds
         for (size_t i = 1; i < size - 1; i++)
         {
             size_t path_pos = rand_path_pos();
-            temp_start = path_pos;
             for (size_t j = 1; j < size - 1; j++)
             {
                 if (j == path_pos)
-                { 
-                    Rand_Int rand_path_length(0, 13 - path_pos);
-                    // maze[i][j] = path;
+                {
+                    
+                    Rand_Int rand_path_length(0, size - 2 - path_pos); // Adjusted to ensure path lengths are within bounds
                     size_t path_length = rand_path_length();
                     for (size_t k = 0; k < path_length; k++)
                     {
-                        
-                        if (j + k < size - 1)
-                        {
-                            maze[i][j + k] = path;
-                            //find the end of the path
-                            temp_end = j + k - 1;
-                        }
+                        maze[i][j + k] = path;
                     }
+                    temp_end = j + path_length - 1;
                 }
             }
-            Rand_Int new_path_pos(temp_start, temp_end);
-            path_pos = new_path_pos();
-            maze[i][path_pos] = path;
+            if (i == size - 2)
+            {
+                temp_end = path_out;
+            }
+
+            Rand_Int rand_pos1(temp_start, temp_end); // Adjusted to ensure path lengths are within bounds
+            size_t n_path = rand_pos1();
+            maze[i][n_path] = path;
         }
     }
 
@@ -115,10 +93,13 @@ public:
 
 int main()
 {
-    Maze maze;
-    // maze.generate();
+    // random path_int, path_out
+    Rand_Int rand(1, 13);
+    int path_in = rand();
+    int path_out = rand();
+
+    Maze maze(path_in, path_out);
     maze.make_walls();
-    // maze.make_path();
     maze.print();
 
     return 0;
