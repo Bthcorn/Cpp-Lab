@@ -10,9 +10,9 @@ public:
     static int gcd(int a, int b) {
         if (b == 0) {
             return a;
-        } else {
-            return gcd(b, a % b);
-        }
+        } else if (a == 0) {
+            return b; }
+        return gcd(b, a % b);
     }
 
     Fraction operator+(const Fraction& other) const {
@@ -64,7 +64,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream& stream, const Fraction& fraction);
     friend std::istream &operator>>(std::istream& stream, Fraction& fraction);
-}; 
+};
 
 std::ostream &operator<<(std::ostream& stream, const Fraction& fraction) {
     stream << fraction.num << "/" << fraction.den;

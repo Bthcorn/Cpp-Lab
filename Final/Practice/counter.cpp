@@ -4,20 +4,20 @@ class Counter {
 private:
     int value;
 public:
-    Counter(int n) : value(n) {}
+    Counter(int n = 0) : value(n) {}
 
     // prefix
     Counter operator++() {    
         ++value;
-        return Counter(value);
+        return *this;
     }
 
     // postfix
     Counter operator++(int) {
         // save the orginal value
-        Counter c(value);
+        Counter old(*this);
         ++value;
-        return c;
+        return old;
     }
 
     int getValue() {
