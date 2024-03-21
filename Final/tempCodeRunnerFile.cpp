@@ -1,0 +1,10 @@
+t.printBoard();
+    // t.makeMove(1, 1, 'X');
+    // t.printBoard();
+    // t.makeMove(1, 2, 'O');
+    // t.printBoard();
+    // t.makeMove(2, 2, 'X');
+    // t.printBoard();
+    // t.makeMove(2, 1, 'O');
+    // t.printBoard();
+    // t.makeMove(3, 3, 'X');
