@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 
 std::size_t string_length(const char *s)
 {
@@ -48,3 +49,29 @@ int main()
     delete[] s;
     delete[] t;
 }
+
+// #include <iostream>
+// #include <cstring> // for strcpy and strcat
+
+// char* str_concat(const char* str1, const char* str2) {
+//     size_t len1 = strlen(str1);
+//     size_t len2 = strlen(str2);
+    
+//     char* result = new char[len1 + len2 + 1]; // +1 for null terminator
+    
+//     strcpy(result, str1);
+//     strcat(result, str2);
+    
+//     return result;
+// }
+
+// int main() {
+//     const char* str1 = "Hello, ";
+//     const char* str2 = "world!";
+    
+//     char* concatenated = str_concat(str1, str2);
+//     std::cout << concatenated << std::endl;
+    
+//     delete[] concatenated; // Remember to free the allocated memory
+//     return 0;
+// }
